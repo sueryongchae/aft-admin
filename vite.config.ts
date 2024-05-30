@@ -14,4 +14,5 @@ export default defineConfig({
       jsxImportSource: '@emotion/react',
     }),
   ],
+  base: '/aft-admin/',
 });
