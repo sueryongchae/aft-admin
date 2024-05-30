@@ -1,4 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
-  return <div className="">로그인</div>;
+  const navigate = useNavigate();
+  return (
+    <div className="" onClick={() => navigate('/asdf')}>
+      로그인
+    </div>
+  );
 };
 export default Login;
