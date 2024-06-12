@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --Black: #000000;
+  --Gray9: #212529;
+  --Gray8: #343a40;
+  --Gray7: #495057;
+  --Gray6: #707C87;
+  --Gray5: #ADB5BD;
+  --Gray4: #C0C7CE;
+  --Gray3: #D0D5DA;
+  --Gray2: #E9ECEF;
+  --Gray1: #F1F3F5;
+  --Gray0: #F8F9FA;
+  --White: #ffffff;
+
+  --Blue6: #228BE6;
+  --Blue0: #E7F5FF;
+  --Blue1: #d0ebff;
+
+  --Red6: #FA5252;
+  --Red1: #FFE3E3;
+  --Red0: #FFF5F5;
+
+  --Violet5: #845EF7;
+  --Violet1: #e5dbff;
+  --Violet0: #F3F0FF;
+
+  --Cian5: #22B8CF;
+  --Cian1: #c5f6fa;
+  --Cian0: #E3FAFC;
+
+  --Teal5: #20c997;
+  --Teal1: #c3fae8;
+  --Teal0: #e6fcf5;
+
+  --Yellow6: #fab005;
+  --Yellow1: #fff3bf;
+  --Yellow0: #fff9db;
+
+  --Orange7: #f76707;
+  --Orange1: #ffe8cc;
+  --Orange0: #fff4e6;
+
+  --Indigo6: #4c6ef5;
+  --Indigo1: #dbe4ff;
+  --Indigo0: #fff4e6;
+
+  --Green6: #40c057;
+  --Green1: #d3f9d8;
+  --Green0: #ebfbee;
+}
+  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pretendard GOV Variable", "Pretendard GOV", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+  
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+}

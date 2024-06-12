@@ -1,3 +1,4 @@
+'use client';
 import { Global, css } from '@emotion/react';
 import tw, { GlobalStyles as BaseStyles } from 'twin.macro';
 
