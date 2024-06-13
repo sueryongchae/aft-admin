@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import tw from 'twin.macro';
 import { sm } from '../styles/mediaQuery';
@@ -28,7 +30,7 @@ const PageNation = ({
   return (
     <div>
       {_type === 1 && (
-        <div css={styles1}>
+        <div css={styles1()}>
           <div
             className="size-20 md:size-18 sm:size-16 hover:bg-Gray1 rounded-4 cursor-pointer"
             onClick={_handleLeftArrow}
@@ -48,7 +50,7 @@ const PageNation = ({
         </div>
       )}
       {_type === 2 && (
-        <div css={styles2}>
+        <div css={styles2()}>
           <div onClick={_handleDoubleLeftArrow}>
             <DoubleLeftArrowIconSVG />
           </div>

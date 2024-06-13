@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import tw from 'twin.macro';
@@ -46,7 +48,7 @@ const SearchBox = ({ _text = '', _disabled = false, _handleChange = () => {}, _h
         )}
       </div>
       {focus && (
-        <div css={styles2}>
+        <div css={styles2()}>
           {a.map((e, i) => (
             <div key={i}>{e}</div>
           ))}

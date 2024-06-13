@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import { md, sm } from '../../styles/mediaQuery';
 import tw from 'twin.macro';
@@ -13,14 +15,14 @@ const CheckBox = ({ _type, _name = '', _checked = false, _handleClick = () => {}
   return (
     <div className="flex">
       {_type === 1 && (
-        <label css={styles1}>
+        <label css={styles1()}>
           <input type="checkbox" onClick={_handleClick} checked={_checked} readOnly />
           <div></div>
         </label>
       )}
 
       {_type === 2 && (
-        <label css={styles2}>
+        <label css={styles2()}>
           <input type="checkbox" onClick={_handleClick} checked={_checked} readOnly />
           <div>{_name}</div>
         </label>

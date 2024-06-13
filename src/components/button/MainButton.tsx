@@ -1,16 +1,19 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import tw from 'twin.macro';
 
 interface Props {
+  _title?: string;
   _disabled?: boolean;
   _ghost?: boolean;
   _handleClick?(): void;
 }
 
-const MainButton = ({ _disabled = false, _ghost = false, _handleClick = () => {} }: Props) => {
+const MainButton = ({ _disabled = false, _title = '', _ghost = false, _handleClick = () => {} }: Props) => {
   return (
     <div onClick={_handleClick} css={styles({ _disabled, _ghost })}>
-      로그인 하기
+      {_title}
     </div>
   );
 };
@@ -21,9 +24,9 @@ const styles = ({ _disabled, _ghost }: Props) => [
     justify-center
     items-center
     cursor-pointer
-    w-[398px] h-[60px]
-    md:w-[360px] md:h-[50px]
-    xs:w-[264px] xs:h-[32px] 
+    w-full h-[60px]
+    md:h-[50px]
+    xs:h-[32px] 
     rounded-10 xs:rounded-4
     text-16 md:text-14 xs:text-12
   `,

@@ -1,3 +1,4 @@
+'use client';
 import { css } from '@emotion/react';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import tw from 'twin.macro';

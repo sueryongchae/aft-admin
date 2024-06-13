@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import { md, sm } from '../../styles/mediaQuery';
 import { ChangeEvent } from 'react';

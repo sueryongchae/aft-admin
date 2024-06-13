@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import tw from 'twin.macro';
 
@@ -27,13 +29,13 @@ const StepBox = ({ _stepList = [], _currentStep = 0 }: Props) => {
             </div>
           )}
           {i === _currentStep && (
-            <div css={styles}>
+            <div css={styles()}>
               <div>{e}</div>
               <CheckIcon_0_SVG />
             </div>
           )}
           {i < _currentStep && (
-            <div css={styles}>
+            <div css={styles()}>
               <div>{e}</div>
               <CheckIcon_1_SVG />
             </div>

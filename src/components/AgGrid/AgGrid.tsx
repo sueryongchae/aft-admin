@@ -1,3 +1,4 @@
+'use client';
 import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
 import 'ag-grid-community/styles/ag-grid.css'; // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'; // Theme
@@ -162,7 +163,7 @@ const AgGrid = () => {
   return (
     <div
       className="ag-theme-quartz" // applying the grid theme
-      css={styles}
+      css={styles()}
     >
       <AgGridReact
         ref={gridRef}

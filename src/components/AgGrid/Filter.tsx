@@ -1,3 +1,4 @@
+'use client';
 import { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { IAfterGuiAttachedParams, IDoesFilterPassParams, SortDirection } from 'ag-grid-community';
 import { CustomFilterProps, useGridFilter } from 'ag-grid-react';
@@ -395,7 +396,9 @@ const Filter = (props: CustomFilterProps & ICustomProps) => {
           }
         });
 
-        const uniqueArr = [...new Set(valueArr)];
+        //// 수정해야함~~~!!
+        // const uniqueArr = [...new Set(valueArr)];
+        const uniqueArr = valueArr;
         const defaultList = uniqueArr.map((e) => ({
           value: e,
           checked: false,

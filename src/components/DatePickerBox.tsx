@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import tw from 'twin.macro';
 import DatePicker from 'react-datepicker';
@@ -149,7 +151,7 @@ const Header = ({
   clickDropDown(): void;
 }) => {
   return (
-    <div css={headerStyles}>
+    <div css={headerStyles()}>
       <div>
         <div className="flex items-center gap-6 cursor-pointer" onClick={clickDropDown}>
           <div>{dropDown ? <UpArrowSVG /> : <DownArrowSVG />}</div>
@@ -208,46 +210,46 @@ const Header = ({
             <div className="mb-16 text-[var(--Gray6)]">월 선택</div>
             <div>
               <div className="flex">
-                <div css={ItemStyles} onClick={() => changeMonth(0)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(0)}>
                   1
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(1)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(1)}>
                   2
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(2)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(2)}>
                   3
                 </div>
               </div>
               <div className="flex">
-                <div css={ItemStyles} onClick={() => changeMonth(3)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(3)}>
                   4
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(4)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(4)}>
                   5
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(5)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(5)}>
                   6
                 </div>
               </div>
               <div className="flex">
-                <div css={ItemStyles} onClick={() => changeMonth(6)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(6)}>
                   7
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(7)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(7)}>
                   8
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(8)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(8)}>
                   9
                 </div>
               </div>
               <div className="flex">
-                <div css={ItemStyles} onClick={() => changeMonth(9)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(9)}>
                   10
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(10)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(10)}>
                   11
                 </div>
-                <div css={ItemStyles} onClick={() => changeMonth(11)}>
+                <div css={ItemStyles()} onClick={() => changeMonth(11)}>
                   12
                 </div>
               </div>
@@ -304,7 +306,7 @@ const headerStyles = () => [
 
 const Input = forwardRef(
   ({ value, onClick }: { value: string; onClick(): void }, ref?: React.ForwardedRef<HTMLButtonElement>) => (
-    <button css={inputStyles} onClick={onClick} ref={ref}>
+    <button css={inputStyles()} onClick={onClick} ref={ref}>
       {value}
     </button>
   ),

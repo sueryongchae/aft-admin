@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import { ChangeEvent } from 'react';
 import tw from 'twin.macro';
@@ -5,7 +7,8 @@ import tw from 'twin.macro';
 interface Props {
   _title?: string;
   _type?: string;
-  _text?: string;
+  _value?: string;
+  _placeholder?: string;
   _disabled?: boolean;
   _requirement?: boolean;
   _error?: string;
@@ -15,7 +18,8 @@ interface Props {
 const InputBox = ({
   _title = '항목 명 관련',
   _type = 'text',
-  _text = '',
+  _value = '',
+  _placeholder = '',
   _disabled = false,
   _requirement = false,
   _error = '',
@@ -30,9 +34,9 @@ const InputBox = ({
       <input
         css={styles({ _disabled, _error })}
         type={_type}
-        value={_text}
+        value={_value}
         onChange={_handleChange}
-        placeholder="플레이스 홀더 입력"
+        placeholder={_placeholder}
       />
 
       <div className="text-12 sm:text-10 mt-2 text-Red6">{_error}&nbsp;</div>
@@ -44,6 +48,7 @@ const styles = ({ _disabled, _error }: Props) => [
   tw`
     flex
     items-center
+    w-full
     h-[48px] md:h-[36px] sm:h-[32px]
     text-16 md:text-14 sm:text-12
     px-16 md:px-12 sm:px-10

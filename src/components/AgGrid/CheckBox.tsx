@@ -1,3 +1,4 @@
+'use client';
 import { css } from '@emotion/react';
 import tw from 'twin.macro';
 
@@ -10,7 +11,7 @@ interface Props {
 const CheckBox = ({ _name = '', _checked, _handleClick }: Props) => {
   return (
     <div>
-      <label css={styles}>
+      <label css={styles()}>
         <input type="checkbox" onClick={_handleClick} checked={_checked} readOnly />
         <div className="text-12">{_name}</div>
       </label>

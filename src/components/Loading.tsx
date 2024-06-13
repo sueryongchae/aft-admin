@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 
 interface Props {
@@ -11,7 +13,7 @@ const Loading = ({ _type, _progress = 0, _loadingText = 'Loading TEXT', _complet
   return (
     <div>
       {_type === 1 && (
-        <div css={styles1}>
+        <div css={styles1()}>
           <SpinnerSVG />
         </div>
       )}

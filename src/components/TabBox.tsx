@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import tw from 'twin.macro';
 import { sm } from '../styles/mediaQuery';
@@ -10,7 +12,7 @@ interface Props {
 
 const TabBox = ({ _tabList, _selectedTab = 0, _handleClick = () => {} }: Props) => {
   return (
-    <div css={styles}>
+    <div css={styles()}>
       {_tabList.map((e, i) => (
         <div key={i} onClick={() => _handleClick(i)}>
           <div className="flex-1 flex items-center">{e}</div>

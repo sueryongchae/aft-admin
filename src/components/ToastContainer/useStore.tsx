@@ -1,3 +1,4 @@
+'use client';
 import { Dispatch, SetStateAction, useState } from 'react';
 
 const useStore = (): [IToast[], (value: IToast[]) => void] => {
@@ -13,8 +14,8 @@ export { useStore };
 export interface IToast {
   _rand: number;
   _type: 'error' | 'info' | 'complete' | 'warning';
-  _text: string;
-  _subText?: string;
+  _title: string;
+  _subTitle?: string;
   _isCancel?: boolean;
 }
 

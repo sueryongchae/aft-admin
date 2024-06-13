@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 'use client';
 import { SerializedStyles, css } from '@emotion/react';
 import tw from 'twin.macro';
@@ -102,7 +103,7 @@ const type: Type = {
   ],
 };
 
-const MainButton = ({
+const StandardButton = ({
   _buttonType,
   _title = 'Button Title',
   _disabled = false,
@@ -135,6 +136,7 @@ const styles = ({ _buttonType, _disabled, _downArrow }: Props) => [
     px-16 md:px-12 sm:px-10 
     text-16 md:text-14 sm:text-12
     rounded-10 sm:rounded-8
+    w-full
     h-[48px] md:h-[36px] sm:h-[32px]
   `,
   css`
@@ -169,4 +171,4 @@ const DownArrowBlack = () => (
   </svg>
 );
 
-export default MainButton;
+export default StandardButton;

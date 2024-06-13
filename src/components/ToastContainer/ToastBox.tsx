@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import { useEffect, useRef } from 'react';
 import tw from 'twin.macro';
@@ -12,7 +14,7 @@ const ToastBox = () => {
   };
 
   return (
-    <div css={styles}>
+    <div css={styles()}>
       {list.map((e: IToast) => (
         <ToastItem key={e._rand} data={e} deleteToast={deleteToast} />
       ))}
@@ -50,7 +52,7 @@ const ToastItem = ({ data, deleteToast }: { data: IToast; deleteToast(rand: numb
           {data._type === 'complete' && <SuccessIconSVG />}
           {data._type === 'warning' && <WarningIconSVG />}
         </div>
-        <div className="text-16 md:text-14 sm:text-12 font-700">{data._text}</div>
+        <div className="text-16 md:text-14 sm:text-12 font-700">{data._title}</div>
         {_isCancel && (
           <div className="size-18 md:size-16 ml-auto cursor-pointer" onClick={handleClickCancel}>
             {data._type === 'error' && <ErrorXIconSVG />}
@@ -60,10 +62,10 @@ const ToastItem = ({ data, deleteToast }: { data: IToast; deleteToast(rand: numb
           </div>
         )}
       </div>
-      {data._subText && (
+      {data._subTitle && (
         <div className="flex items-center gap-8 mt-8 md:mt-2">
           <div className="size-20"></div>
-          <div className="text-14 md:text-12 sm:text-10">{data._text}</div>
+          <div className="text-14 md:text-12 sm:text-10">{data._subTitle}</div>
           <div className="size-18 ml-auto"></div>
         </div>
       )}

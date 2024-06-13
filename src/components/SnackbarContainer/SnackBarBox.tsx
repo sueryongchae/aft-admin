@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+'use client';
 import { css } from '@emotion/react';
 import { useEffect, useRef } from 'react';
 import tw from 'twin.macro';
@@ -11,7 +13,7 @@ const SnackBarBox = () => {
   };
 
   return (
-    <div css={styles}>
+    <div css={styles()}>
       {list.map((e: ISnackBar) => (
         <SnackBarItem key={e._rand} data={e} deleteSnackBar={deleteSnackBar} />
       ))}
@@ -51,7 +53,7 @@ const SnackBarItem = ({ data, deleteSnackBar }: { data: ISnackBar; deleteSnackBa
   }, []);
 
   return (
-    <div ref={toastRef} css={item} data-rand={data._rand}>
+    <div ref={toastRef} css={item()} data-rand={data._rand}>
       <div className="flex items-center gap-8">
         <div className="text-16 md:text-14 sm:text-12 font-700">{data._text}</div>
         <div className="size-16 ml-auto cursor-pointer" onClick={handleClickCancel}>
