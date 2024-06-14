@@ -12,7 +12,7 @@ const StepBox = ({ _stepList = [], _currentStep = 0 }: Props) => {
   return (
     <div className="flex pb-15 pl-5 pr-5">
       {_stepList.map((e, i) => (
-        <div className="flex items-center" key={i}>
+        <div className="flex items-center whitespace-nowrap" key={i}>
           {i > _currentStep && (
             <div
               className="flex items-center justify-center"
@@ -25,7 +25,8 @@ const StepBox = ({ _stepList = [], _currentStep = 0 }: Props) => {
                 ${styles()}
               `}
             >
-              1<div>{e}</div>
+              {i + 1}
+              <div>{e}</div>
             </div>
           )}
           {i === _currentStep && (
@@ -65,7 +66,7 @@ const styles = () => [
 
     & > div {
       position: absolute;
-      top: 18px;
+      top: 20px;
       left: 50%;
       transform: translate(-50%, 0);
     }

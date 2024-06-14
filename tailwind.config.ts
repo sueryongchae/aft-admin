@@ -1,9 +1,9 @@
 import type { Config } from 'tailwindcss';
 
-const px0_10 = Object.fromEntries(Array.from(Array(101)).map((_, i) => [`${i}`, `${i}px`]));
+const px0_10 = Object.fromEntries(Array.from(Array(11)).map((_, i) => [`${i}`, `${i}px`]));
 const px0_100 = Object.fromEntries(Array.from(Array(101)).map((_, i) => [`${i}`, `${i}px`]));
-const px0_200 = Object.fromEntries(Array.from(Array(101)).map((_, i) => [`${i}`, `${i}px`]));
-const flex0_12 = Object.fromEntries(Array.from(Array(101)).map((_, i) => [`${i}`, `${i} ${i} 0%`]));
+const px0_200 = Object.fromEntries(Array.from(Array(201)).map((_, i) => [`${i}`, `${i}px`]));
+const flex0_12 = Object.fromEntries(Array.from(Array(13)).map((_, i) => [`${i}`, `${i} ${i} 0%`]));
 
 const config: Config = {
   content: [
@@ -85,7 +85,7 @@ const config: Config = {
     extend: {
       margin: px0_200,
       padding: px0_200,
-      size: px0_100,
+      size: px0_200,
       gap: px0_100,
       borderRadius: px0_100,
       spacing: px0_200,
