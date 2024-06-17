@@ -1,81 +1,23 @@
 'use client';
-import LogoText from '@/components/Admin-components/LogoText';
-import { toast } from '@/components/ToastContainer';
-import MainButton from '@/components/button/MainButton';
-import StandardButton from '@/components/button/StandardButton';
-import InputBox from '@/components/input/InputBox';
-import { useRouter } from 'next/navigation';
-import { ChangeEvent, useEffect, useState } from 'react';
 
-const Page = () => {
-  const router = useRouter();
-  const [loginText, setLoginText] = useState('로그인');
+import { ReactNode } from 'react';
 
-  const [id, setId] = useState('');
-  const [idError, setIdError] = useState('형식에 맞게 이메일을 작성해주세요.');
-  const [password, setPassWord] = useState('');
-  const [passwordError, setPasswordError] = useState('형식에 맞게 이메일을 작성해주세요.');
-
-  const [disableLogin, setDisableLogin] = useState(true);
-
-  const onChangeId = (e: ChangeEvent) => {
-    const { value } = e.target as HTMLInputElement;
-    setId(value);
-  };
-
-  const onChangePassWord = (e: ChangeEvent) => {
-    const { value } = e.target as HTMLInputElement;
-    setPassWord(value);
-  };
-
-  const login = () => {
-    toast({
-      _type: 'error',
-      _title: '계정 정보가 일치하지 않습니다. 다시 확인하고 입력해주세요.',
-      _isCancel: false,
-    });
-  };
-
-  useEffect(() => {
-    if (id === '') {
-      setLoginText('로그인');
-      setDisableLogin(true);
-      return;
-    }
-    if (password === '') {
-      setLoginText('로그인');
-      setDisableLogin(true);
-      return;
-    }
-
-    setLoginText('로그인 하기');
-    setDisableLogin(false);
-  }, [id, password]);
-
+const AuthBox = ({ children }: { children: ReactNode }) => {
   return (
-    <LogoText>
-      <div>
-        <InputBox
-          _value={password}
-          _error={passwordError}
-          _handleChange={onChangePassWord}
-          _title="비밀번호"
-          _placeholder="비밀번호를 입력해주세요"
-          _type="password"
-        />
-        <div>
-          <MainButton _title={loginText} _disabled={disableLogin} _handleClick={login} />
+    <div className="h-full flex justify-center items-center bg-Gray0">
+      <div className="flex flex-col justify-between w-[584px] h-[615px] py-40 px-92 shadow-[4px_4px_12px_0px_rgba(134,142,150,0.06)] border border-Gray0 bg-White rounded-20">
+        <div className="flex flex-col items-center">
+          <div className="mb-20">
+            <Logo />
+          </div>
+          <div className="text-24 font-700">온오프라인 통합된 경험</div>
         </div>
-        <StandardButton
-          _buttonType="Subtle"
-          _title="이미 가입하신 회원이신가요?"
-          _handleClick={() => router.push('/signin')}
-        />
+
+        <div className="flex-1">{children}</div>
       </div>
-    </LogoText>
+    </div>
   );
 };
-export default Page;
 
 const Logo = () => (
   <svg
@@ -100,3 +42,5 @@ const Logo = () => (
     </defs>
   </svg>
 );
+
+export default AuthBox;

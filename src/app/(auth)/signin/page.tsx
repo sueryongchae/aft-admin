@@ -1,5 +1,4 @@
 'use client';
-import LogoText from '@/components/Admin-components/LogoText';
 import { toast } from '@/components/ToastContainer';
 import MainButton from '@/components/button/MainButton';
 import StandardButton from '@/components/button/StandardButton';
@@ -53,41 +52,39 @@ const Page = () => {
   }, [id, password]);
 
   return (
-    <LogoText>
-      <div className="h-full flex flex-col justify-around">
-        <div>
-          <div className="mb-24">
-            <InputBox
-              _value={id}
-              _error={idError}
-              _handleChange={onChangeId}
-              _title="ID (ID 혹은 Email)"
-              _placeholder="ID 혹은 이메일을 입력해주세요"
-            />
-          </div>
-          <div>
-            <InputBox
-              _value={password}
-              _error={passwordError}
-              _handleChange={onChangePassWord}
-              _title="비밀번호"
-              _placeholder="비밀번호를 입력해주세요"
-              _type="password"
-            />
-          </div>
-        </div>
-
-        <div>
-          <MainButton _title={loginText} _disabled={disableLogin} _handleClick={login} />
-          <StandardButton
-            _buttonType="Subtle"
-            _title="혹시 회원이 아니신가요?"
-            _handleClick={() => router.push('/signup')}
+    <div className="h-full flex flex-col justify-around">
+      <div>
+        <div className="mb-24">
+          <InputBox
+            _value={id}
+            _error={idError}
+            _handleChange={onChangeId}
+            _title="ID (ID 혹은 Email)"
+            _placeholder="ID 혹은 이메일을 입력해주세요"
           />
-          <StandardButton _buttonType="Subtle" _title="비밀번호를 잊어버리셨나요?" />
+        </div>
+        <div>
+          <InputBox
+            _value={password}
+            _error={passwordError}
+            _handleChange={onChangePassWord}
+            _title="비밀번호"
+            _placeholder="비밀번호를 입력해주세요"
+            _type="password"
+          />
         </div>
       </div>
-    </LogoText>
+
+      <div>
+        <MainButton _title={loginText} _disabled={disableLogin} _handleClick={login} />
+        <StandardButton
+          _buttonType="Subtle"
+          _title="혹시 회원이 아니신가요?"
+          _handleClick={() => router.push('/signup')}
+        />
+        <StandardButton _buttonType="Subtle" _title="비밀번호를 잊어버리셨나요?" />
+      </div>
+    </div>
   );
 };
 export default Page;
