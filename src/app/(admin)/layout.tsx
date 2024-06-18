@@ -1,8 +1,7 @@
 'use client';
-import useLocalStorage from '@/customHooks/useLocalStorage';
 import useTabListStore from '@/store';
 import { usePathname, useRouter } from 'next//navigation';
-import { ReactNode, useEffect } from 'react';
+import { EventHandler, HTMLAttributes, MouseEventHandler, ReactNode, useEffect } from 'react';
 
 const Navigation = ({ children }: { children: ReactNode }) => {
   return (
@@ -18,11 +17,51 @@ const Navigation = ({ children }: { children: ReactNode }) => {
 
 const TabBar = () => {
   const pathname = usePathname();
-  const { tabList, addTab } = useTabListStore();
+  const { tabList, addTab, deleteTab } = useTabListStore();
+  const router = useRouter();
 
-  const moveTab = (tabName: string) => {};
+  const moveTab = (url: string) => {
+    router.push(url);
+  };
 
-  const deleteTab = (tabName: string) => {};
+  const removeTab = (url: string) => {
+    const index = tabList.indexOf(url);
+    const _tabList = [...tabList];
+
+    if (_tabList.length === 1) {
+      router.push('/home');
+      addTab('/home');
+    } else {
+      if (pathname === url) {
+        if (index === _tabList.length - 1) {
+          router.push(_tabList[index - 1]);
+        } else {
+          router.push(_tabList[index + 1]);
+        }
+      }
+    }
+
+    deleteTab(url);
+  };
+
+  const leftTab = () => {
+    const index = tabList.indexOf(pathname);
+    if (index === 0) {
+      router.push(tabList[tabList.length - 1]);
+    } else {
+      router.push(tabList[index - 1]);
+    }
+  };
+
+  const rightTab = () => {
+    const index = tabList.indexOf(pathname);
+    if (index === tabList.length - 1) {
+      router.push(tabList[0]);
+    } else {
+      router.push(tabList[index + 1]);
+    }
+  };
+  const newTab = () => {};
 
   useEffect(() => {
     addTab(pathname);
@@ -30,24 +69,24 @@ const TabBar = () => {
 
   return (
     <div className="h-[36px] flex items-center bg-Gray0">
-      <div className="flex justify-center items-center size-28 cursor-pointer">
+      <div className="flex justify-center items-center size-28 cursor-pointer" onClick={leftTab}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10.5 11.5L7.5 8.5L10.5 5.5" stroke="#707C87" strokeLinecap="round" />
         </svg>
       </div>
-      <div className="flex justify-center items-center size-28 cursor-pointer">
+      <div className="flex justify-center items-center size-28 cursor-pointer" onClick={rightTab}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M7.5 5.5L10.5 8.5L7.5 11.5" stroke="#707C87" strokeLinecap="round" />
         </svg>
       </div>
-      <div className="flex justify-center items-center size-28 cursor-pointer">
+      <div className="flex justify-center items-center size-28 cursor-pointer" onClick={newTab}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 5.5V12.5M12.5 9H5.5" stroke="#707C87" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
       <div className="flex-1 flex h-full overflow-x-auto">
         {tabList.map((e: string) => (
-          <Tab key={e} url={e} handleClick={() => moveTab(e)} handleDelete={() => deleteTab(e)} />
+          <Tab key={e} url={e} handleClick={() => moveTab(e)} handleDelete={() => removeTab(e)} />
         ))}
       </div>
     </div>
@@ -58,11 +97,17 @@ const Tab = ({ url, handleClick, handleDelete }: { url: string; handleClick(): v
   const pathname = usePathname();
   return (
     <div
-      className={`flex-[0_0_auto] h-full flex items-center gap-12 border-r border-Gray2 px-12 cursor-pointer bg-${url === pathname ? 'White' : ''}`}
+      className={`flex-[0_0_auto] select-none h-full flex items-center gap-12 border-r border-Gray2 px-12 cursor-pointer bg-${url === pathname ? 'White' : ''}`}
       onClick={handleClick}
     >
       <div className="text-14 font-400 whitespace-nowrap">{SideBarItemList[url].title}</div>
-      <div className="flex justify-center items-center size-20 cursor-pointer" onClick={handleDelete}>
+      <div
+        className="flex justify-center items-center size-20 cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleDelete();
+        }}
+      >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M11.5 11.5L4.5 4.5M11.5 4.5L4.5 11.5"
@@ -81,7 +126,7 @@ const SideBar = () => {
   const { tabList, addTab } = useTabListStore();
 
   const moveTab = (url: string) => {
-    // addTab(url);
+    addTab(url);
     router.push(url);
   };
 

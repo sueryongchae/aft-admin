@@ -4,6 +4,7 @@ import { createJSONStorage, persist, PersistOptions } from 'zustand/middleware';
 type AuthStore = {
   tabList: string[];
   addTab: (url: string) => void;
+  deleteTab: (url: string) => void;
 };
 
 type MyPersist = (config: StateCreator<AuthStore>, options: PersistOptions<AuthStore>) => StateCreator<AuthStore>;
@@ -14,11 +15,15 @@ const useTabListStore = create<AuthStore, []>(
       tabList: [],
       addTab: (url: string) =>
         set((state) => {
-          if (!state.tabList.includes(url)) {
-            return { tabList: [...state.tabList, url] };
-          } else {
+          if (state.tabList.includes(url)) {
             return { tabList: state.tabList };
+          } else {
+            return { tabList: [...state.tabList, url] };
           }
+        }),
+      deleteTab: (url: string) =>
+        set((state) => {
+          return { tabList: [...state.tabList.filter((e) => e !== url)] };
         }),
     }),
     {
