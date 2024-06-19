@@ -5,15 +5,15 @@ import { md, sm } from '../../styles/mediaQuery';
 import { ChangeEvent } from 'react';
 
 interface Props {
-  _chcked?: boolean;
+  _checked?: boolean;
   _disabled?: boolean;
   _handleChange?(e: ChangeEvent<Element>): void;
 }
 
-const SwitchBox = ({ _chcked = false, _disabled = false, _handleChange = () => {} }: Props) => {
+const SwitchBox = ({ _checked = false, _disabled = false, _handleChange = () => {} }: Props) => {
   return (
     <label css={styles({ _disabled })}>
-      <input type="checkbox" onChange={_handleChange} checked={_chcked} readOnly />
+      <input type="checkbox" onChange={_handleChange} checked={_checked} readOnly />
       <span></span>
     </label>
   );

@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 'use client';
 import { SerializedStyles, css } from '@emotion/react';
+import { ReactNode } from 'react';
 import tw from 'twin.macro';
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
   _title?: string;
   _downArrow?: boolean;
   _disabled?: boolean;
+  _image?: ReactNode;
   _handleClick?(): void;
 }
 
@@ -108,12 +110,13 @@ const StandardButton = ({
   _title = 'Button Title',
   _disabled = false,
   _downArrow = false,
+  _image,
   _handleClick = () => {},
 }: Props) => {
   return (
     <div onClick={_handleClick} css={styles({ _buttonType, _disabled, _downArrow })}>
       {!_disabled && _downArrow && (
-        <div className="mr-8 md:mr-6 sm:mr-4 size-20 md:size-18 sm:size-10">
+        <div className="mr-8 md:mr-6 sm:mr-4 size-20 md:size-18 sm:size-10 whitespace-nowrap select-none">
           {_buttonType === 'Primary' && <DownArrowWhite />}
           {_buttonType === 'Secondary' && <DownArrowWhite />}
           {_buttonType === 'Default' && <DownArrowGray />}
@@ -122,6 +125,7 @@ const StandardButton = ({
           {_buttonType === 'Subtle' && <DownArrowBlack />}
         </div>
       )}
+      {!_disabled && _image && <div className="mr-4">{_image}</div>}
       {_title}
     </div>
   );

@@ -11,23 +11,41 @@ const Page = () => {
   const [loginText, setLoginText] = useState('로그인');
 
   const [id, setId] = useState('');
-  const [idError, setIdError] = useState('형식에 맞게 이메일을 작성해주세요.');
+  const [idError, setIdError] = useState('');
   const [password, setPassWord] = useState('');
-  const [passwordError, setPasswordError] = useState('형식에 맞게 이메일을 작성해주세요.');
+  const [passwordError, setPasswordError] = useState('');
 
   const [disableLogin, setDisableLogin] = useState(true);
 
   const onChangeId = (e: ChangeEvent) => {
     const { value } = e.target as HTMLInputElement;
-    setId(value);
+    setId(value.replace(/\s/g, ''));
   };
 
   const onChangePassWord = (e: ChangeEvent) => {
     const { value } = e.target as HTMLInputElement;
-    setPassWord(value);
+    setPassWord(value.replace(/\s/g, ''));
   };
 
   const login = () => {
+    if (password.length < 8) {
+      setPasswordError('8자 이상 작성해주세요');
+      return;
+    }
+
+    if (/^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/.test(password)) {
+      setPasswordError('영대소문자, 숫자, 특수기호 중 2개 이상 포함되어야 합니다');
+      return;
+    }
+
+    if (password.length > 50) {
+      setPasswordError('50자 내로 입력해주세요');
+      return;
+    }
+
+    setIdError('');
+    setPasswordError('');
+
     toast({
       _type: 'error',
       _title: '계정 정보가 일치하지 않습니다. 다시 확인하고 입력해주세요.',
@@ -71,6 +89,7 @@ const Page = () => {
             _title="비밀번호"
             _placeholder="비밀번호를 입력해주세요"
             _type="password"
+            _isEye={true}
           />
         </div>
       </div>

@@ -35,6 +35,7 @@ const config: Config = {
       Gray0: '#F8F9FA',
       White: '#ffffff',
       Blue6: '#228BE6',
+      Blue2: '#A5D8FF',
       Blue0: '#E7F5FF',
       Blue1: '#d0ebff',
       Red6: '#FA5252',
@@ -75,6 +76,8 @@ const config: Config = {
       48: ['48px', { lineHeight: 'normal' }],
     },
     fontWeight: {
+      200: '200',
+      300: '300',
       400: '400',
       500: '500',
       600: '600',

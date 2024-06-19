@@ -1,16 +1,11 @@
 /** @jsxImportSource @emotion/react */
 'use client';
 import { SerializedStyles, css } from '@emotion/react';
+import { ReactNode } from 'react';
 import tw from 'twin.macro';
 
 interface Props {
-  _title: string;
-  _text: string;
-  _options: IOptions;
-}
-
-interface IOptions {
-  _direction?:
+  _arrowDirection:
     | 'top-left'
     | 'top-center'
     | 'top-right'
@@ -25,19 +20,20 @@ interface IOptions {
     | 'left-top';
   _top?: number;
   _left?: number;
+  _isArrow: boolean;
 }
 
-const Tooltip = ({ _title = '', _text = '', _options }: Props) => {
-  return (
-    <div css={styles(_options)}>
-      <div>{_title}</div>
-      {_title !== '' && _text !== '' && <div className="h-[4px]"></div>}
-      <div className="font-400">{_text}</div>
-    </div>
-  );
+const Tooltip = ({
+  _arrowDirection = 'top-left',
+  _top = 0,
+  _left = 0,
+  _isArrow = true,
+  children,
+}: Props & { children: ReactNode }) => {
+  return <div css={styles({ _arrowDirection, _top, _left, _isArrow })}>{children}</div>;
 };
 
-const styles = ({ _direction = 'top-left', _top = 50, _left = 50 }: IOptions) => [
+const styles = ({ _arrowDirection, _top, _left, _isArrow }: Props) => [
   tw`
     absolute
     flex
@@ -57,13 +53,15 @@ const styles = ({ _direction = 'top-left', _top = 50, _left = 50 }: IOptions) =>
     top: ${_top}%;
     left: ${_left}%;
 
+    transform: translate(-50%, -50%);
+
     &::before {
-      content: '';
+      ${_isArrow && 'content: "";'}
       position: absolute;
       display: block;
       z-index: 0;
 
-      ${directionList[_direction]()}
+      ${arrowDirectionList[_arrowDirection]()}
     }
   `,
 ];
@@ -83,7 +81,7 @@ interface IDirectionList {
   'left-top'(): SerializedStyles[];
 }
 
-const directionList: IDirectionList = {
+const arrowDirectionList: IDirectionList = {
   'top-left': () => [
     css`
       top: 0;

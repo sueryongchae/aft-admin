@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 'use client';
 import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
 import 'ag-grid-community/styles/ag-grid.css'; // Core CSS
